@@ -7,25 +7,23 @@ import static com.google.common.truth.Truth.assertThat;
 
 public class GetSvgTest {
 
-    @DisplayName("should get and log svg")
+    @DisplayName("should get and log svg source code")
     @Test
-    public void getSvgTest() {
+    void getSvgTest() {
 
-        var svg = SvgReaderService.getSvg("pin.svg");
-
-        assertThat(svg).isNotNull();
+        assertThat(SvgReaderService.logSvgSource("pin.svg")).isNotNull();
+        assertThat(SvgReaderService.logSvgSource("doors.svg")).isNotNull();
+        assertThat(SvgReaderService.logSvgSource("text01.svg")).isNotNull();
+        assertThat(SvgReaderService.logSvgSource("text02.svg")).isNotNull();
     }
 
     @DisplayName("should get and parse svg to text")
     @Test
-    public void readSvgTest() {
+    void readSvgTest() {
 
-        var text = SvgReaderService.readSvg("pin.svg");
-        SvgReaderService.readSvg("doors.svg");
-        SvgReaderService.readSvg("text01.svg");
-        SvgReaderService.readSvg("text02.svg");
-        SvgReaderService.readSvg("three.svg");
-
-        assertThat(text).isNotNull();
+        assertThat(SvgReaderService.readSvg("pin.svg")).contains("3492");
+        assertThat(SvgReaderService.readSvg("doors.svg")).contains("Doors");
+        assertThat(SvgReaderService.readSvg("text01.svg")).contains("there");
+        assertThat(SvgReaderService.readSvg("text02.svg")).contains("labore et dolore");
     }
 }
