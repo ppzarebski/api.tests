@@ -5,7 +5,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import services.json_placeholder.model.PostModel;
 
-import static java.util.function.Predicate.not;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
