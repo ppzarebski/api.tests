@@ -19,18 +19,17 @@ public class ReadSVG {
         File file = null;
         try {
             URL pathUrl = new URL(url);
-            String path = getTempPath() + "tmp" + ".svg";
-            System.out.println(path);
+            String path = getTempPath() + ".svg";
             file = new File(path);
             FileUtils.copyURLToFile(pathUrl, file);
         } catch (Exception e) {
-            System.out.println("dupa");
+            System.out.println("SVG file not found.");
         }
         return file;
     }
 
     public static File convertSvgToPng(File file) {
-        String path = getTempPath() + "tmp" + ".png";
+        String path = getTempPath() + ".png";
         try {
             TranscoderInput input_svg_image = new TranscoderInput(Paths.get(file.getPath()).toUri().toURL().toString());
             OutputStream png_ostream = new FileOutputStream(path);
@@ -41,7 +40,7 @@ public class ReadSVG {
             png_ostream.flush();
             png_ostream.close();
         } catch (Exception e) {
-            System.out.println("Exception catched. File not found");
+            System.out.println("Cannot find SVG file to convert.");
         }
         return new File(path);
     }
@@ -58,12 +57,13 @@ public class ReadSVG {
             result = instance.doOCR(imageFile);
             System.out.println(result);
         } catch (TesseractException e) {
-            System.err.println(e.getMessage());
+            System.out.println("Reading failed or file not found.");
         }
         return result;
     }
 
     private static String getTempPath() {
-        return System.getProperty("java.io.tmpdir");
+        return System.getProperty("java.io.tmpdir")
+                .concat("tmp");
     }
 }

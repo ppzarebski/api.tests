@@ -12,13 +12,12 @@ public class GetPostTest {
 
     @DisplayName("should get random post")
     @Test
-    public void getRandomTest() {
+    void getRandomTest() {
 
-        var response = JsonPlaceholderService.getPosts(Numbers.getRandomInt(1, 99));
+        var response = JsonPlaceholderService.getPost(Numbers.getRandomInt(1, 99));
 
         PostModel parsedResponse = response.as(PostModel.class);
 
         assertThat(parsedResponse.body, !(parsedResponse.body.isEmpty()));
-
     }
 }

@@ -11,7 +11,7 @@ public class JsonPlaceholderService {
     public static final String POSTS = "/posts";
     public static final String POST = "/posts/{postId}";
 
-    public static Response getPosts(Integer postId) {
+    public static Response getPost(Integer postId) {
         RequestSpecification.get(BASE_URL);
         return RestAssured.given().pathParam("postId", postId).get(POST).thenReturn();
     }

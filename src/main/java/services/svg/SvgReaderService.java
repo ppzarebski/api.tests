@@ -9,7 +9,7 @@ public class SvgReaderService {
 
     public static final String BASE_URL = "https://ppzarebski.github.io/svg/";
 
-    public static Response getSvg(String fileName) {
+    public static Response logSvgSource(String fileName) {
         RequestSpecification.get(BASE_URL + fileName);
         return RestAssured.given().get().thenReturn();
     }
