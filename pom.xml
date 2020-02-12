@@ -73,7 +73,11 @@
             <artifactId>byte-buddy</artifactId>
             <version>1.10.7</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
+            <version>1.5.2</version>
+        </dependency>
     </dependencies>
 
 </project>
